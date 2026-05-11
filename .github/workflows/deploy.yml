@@ -12,7 +12,8 @@ jobs:
   deploy:
     name: Deploy to Ubuntu VPS
     runs-on: ubuntu-latest
-
+    environment: SGP_VPS
+    
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
