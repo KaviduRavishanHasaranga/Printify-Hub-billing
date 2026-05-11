@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS orders (
     rate DECIMAL(10, 2) DEFAULT 0,
     notes TEXT,
     status VARCHAR(20) DEFAULT 'pending' CHECK (status IN ('pending', 'in_progress', 'completed', 'billed')),
+    paper_sizes JSONB,
     received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
