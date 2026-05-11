@@ -11,17 +11,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Database Auto-migrations
-const db = require('./database/db');
-(async () => {
-    try {
-        await db.query(`ALTER TABLE orders ADD COLUMN IF NOT EXISTS paper_sizes JSONB;`);
-        console.log('✓ Database schema verified/updated');
-    } catch (err) {
-        console.error('Migration error:', err);
-    }
-})();
-
 // Auth route (unprotected)
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
