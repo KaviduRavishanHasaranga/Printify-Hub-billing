@@ -44,6 +44,9 @@ jobs:
             npm run build
             cd ..
 
+            echo "🗄️  Running database migrations..."
+            psql "$DATABASE_URL" -f /var/www/billing-system/backend/database/migrate_add_paper_sizes.sql || true
+
             echo "🔄 Restarting backend with PM2..."
             pm2 restart billing-backend --update-env || pm2 start ecosystem.config.js
             pm2 save --force
